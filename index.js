@@ -8,11 +8,13 @@ const PORT = process.env.PORT || 3001
 
 
 const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'Pr0gresstech00++',
-  database: 'users',
+  host: 'us-cdbr-east-03.cleardb.com',
+  user: 'b0e6e1e2011322',
+  password: 'cdeace8d',
+  database: 'heroku_67d187db369a4a4',
 })
+
+mysql://b0e6e1e2011322:cdeace8d@us-cdbr-east-03.cleardb.com/heroku_67d187db369a4a4?reconnect=true
 
 app.use(cors())
 app.use(express.json())
