@@ -34,7 +34,7 @@ app.get('/api/get', (req, res) => {
 
 app.get('/api/calc', (req, res) => {
   const sqlSelect =
-    'SELECT COUNT(UserID) as users FROM users_reg UNION ALL SELECT COUNT(UserID) FROM users_reg WHERE DATEDIFF(Last_Activity, Data_Registration) > 7';
+    'SELECT COUNT(UserID) FROM users_reg WHERE DATEDIFF(Last_Activity, Data_Registration) > 6 UNION ALL SELECT COUNT(UserID) FROM users_reg WHERE TO_DAYS(NOW()) - TO_DAYS(Data_Registration) < 6;'
   db.query(sqlSelect, (err, result) => {
     if (err) {
       res.send(err);
@@ -81,5 +81,5 @@ app.post('/api/insert', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log('port is running 3001');
+  console.log('Port is running 3001');
 });
