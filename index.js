@@ -34,7 +34,7 @@ app.get('/api/get', (req, res) => {
 
 app.get('/api/calc', (req, res) => {
   const sqlSelect =
-    'SELECT COUNT(UserID) as users FROM users_reg WHERE DATEDIFF(Last_Activity, Data_Registration) > 6 UNION ALL SELECT COUNT(UserID) as users FROM users_reg WHERE TO_DAYS(NOW()) - TO_DAYS(Data_Registration) < 8;'
+    'SELECT COUNT(UserID) as users FROM users_reg WHERE DATEDIFF(Last_Activity, Data_Registration) > 6 UNION ALL SELECT COUNT(UserID) as users FROM users_reg WHERE TO_DAYS(NOW()) - TO_DAYS(Data_Registration) < 6;'
   db.query(sqlSelect, (err, result) => {
     if (err) {
       res.send(err);
