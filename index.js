@@ -34,7 +34,7 @@ app.get('/api/get', (req, res) => {
 
 app.get('/api/calc', (req, res) => {
   const sqlSelect =
-    'SELECT COUNT(UserID) as users FROM users_reg UNION SELECT COUNT(UserID) FROM users_reg WHERE DATEDIFF(Last_Activity, Data_Registration) > 7';
+    'SELECT COUNT(UserID) as users FROM users_reg UNION ALL SELECT COUNT(UserID) FROM users_reg WHERE DATEDIFF(Last_Activity, Data_Registration) > 7';
   db.query(sqlSelect, (err, result) => {
     if (err) {
       res.send(err);
